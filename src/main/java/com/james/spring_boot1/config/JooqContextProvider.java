@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JooqContextProvider {
-    @Autowired
-    InitConfig initConfig;
+    final InitConfig initConfig;
 
-    public JooqContextProvider(){
+    public JooqContextProvider(InitConfig initConfig){
+        this.initConfig = initConfig;
     }
 
     public DSLContext dslContext(){

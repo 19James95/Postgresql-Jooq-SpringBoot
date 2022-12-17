@@ -15,9 +15,11 @@ import javax.sql.DataSource;
 public class InitConfig {
     private static final Logger logger = LoggerFactory.getLogger(InitConfig.class);
 
-    @Autowired
-    @Qualifier("dataSource")
-    private DataSource dataSource;
+    private final DataSource dataSource;
+
+    public InitConfig(@Qualifier("dataSource") DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Bean
     public DataSourceConnectionProvider connectionProvider(){

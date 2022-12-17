@@ -1,9 +1,9 @@
-package com.james.spring_boot1.bean.bo;
+package com.james.spring_boot1.bean.bo.demo;
 
 import lombok.Data;
 
 @Data
-public class RecordUpdate {
+public class InfoBO {
     String name;
     Integer id;
     Integer age;
