@@ -1,4 +1,4 @@
-package com.james.spring_boot1.bean.vo;
+package com.wuyibo.spring_boot1.bean.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

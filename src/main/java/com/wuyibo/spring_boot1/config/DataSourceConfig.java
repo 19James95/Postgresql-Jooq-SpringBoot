@@ -1,4 +1,4 @@
-package com.james.spring_boot1.config;
+package com.wuyibo.spring_boot1.config;
 
 
 import com.zaxxer.hikari.HikariConfig;

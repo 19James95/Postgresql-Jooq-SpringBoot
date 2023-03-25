@@ -1,9 +1,4 @@
-#springdatasource:
-#  url:jdbc:postgresql://localhost:5432/postgres
-#spring.datasource.username=postgres
-#spring.datasource.password=123456
-#spring.datasource.driver-class-name=org.postgresql.Driver
-#logging.level.web = debug
+#this is homework of wuyibo
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
