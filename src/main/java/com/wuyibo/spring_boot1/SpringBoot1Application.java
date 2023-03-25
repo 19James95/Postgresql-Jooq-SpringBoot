@@ -1,15 +1,13 @@
-package com.james.spring_boot1;
+package com.wuyibo.spring_boot1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
+@EnableAspectJAutoProxy
 public class SpringBoot1Application {
-
     public static void main(String[] args) {
-
         SpringApplication.run(SpringBoot1Application.class, args);
     }
-
 }

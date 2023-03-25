@@ -1,9 +1,8 @@
-package com.james.spring_boot1.config;
+package com.wuyibo.spring_boot1.config;
 
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
