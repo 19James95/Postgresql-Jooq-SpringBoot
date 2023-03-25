@@ -15,23 +15,12 @@ public class CoursesController {
 
     @Autowired
     private CoursesService service;
-    private final String ADD = "/add";
-    private final String UPDATE = "/update";
-    private final String GET_COURSE = "/course/{id}";
-    private final String GET_COURSES = "/";
+    private final String UPSERT = "/upsert";
 
-    @PostMapping(ADD)
+    @PostMapping(UPSERT)
     @APILog
-    public CourseVO addStudent(@RequestBody CourseBO course) {
-        service.addCourse(course);
+    public CourseVO upsertCourse(@RequestBody CourseBO course) {
+        service.upsertCourse(course);
         return new CourseVO().success();
     }
-
-    @PostMapping(UPDATE)
-    @APILog
-    public CourseVO updateStudent(@RequestBody CourseBO course) {
-        service.updateCourse(course);
-        return new CourseVO().success();
-    }
-
 }

@@ -3,7 +3,7 @@ CREATE TABLE students (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   gender VARCHAR(10) NOT NULL,
-  birthdate DATE NOT NULL,
+  birthdate VARCHAR(100) NOT NULL,
   grade INT NOT NULL,
   major VARCHAR(100) NOT NULL,
   clazz VARCHAR(100),

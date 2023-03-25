@@ -13,22 +13,13 @@ public class StudentsController {
 
     @Autowired
     private StudentsService service;
-    private final String ADD = "/add";
-    private final String UPDATE = "/update";
-    private final String GET_STUDENT = "/student/{id}";
-    private final String GET_STUDENTS = "/";
 
-    @PostMapping(ADD)
+    private final String UPSERT = "/upsert";
+
+    @PostMapping(UPSERT)
     @APILog
     public StudentVO addStudent(@RequestBody StudentBO student) {
-        service.addStudent(student);
-        return new StudentVO().success();
-    }
-
-    @PostMapping(UPDATE)
-    @APILog
-    public StudentVO updateStudent(@RequestBody StudentBO student) {
-        service.updateStudent(student);
+        service.upsertStudent(student);
         return new StudentVO().success();
     }
 }

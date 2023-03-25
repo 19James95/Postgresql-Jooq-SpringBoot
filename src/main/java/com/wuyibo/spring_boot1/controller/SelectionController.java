@@ -15,23 +15,15 @@ import java.util.List;
 public class SelectionController {
     @Autowired
     private CourseSelectionService service;
-    private final String ADD = "/add";
-    private final String UPDATE = "/update";
+    private final String UPSERT = "/upsert";
 
     private final String GET_SELECTION_BY_COURSE = "/course/{id}";
     private final String GET_SELECTION_BY_STUDENT = "/student/{id}";
 
-    @PostMapping(ADD)
+    @PostMapping(UPSERT)
     @APILog
     public CourseSelectionVO addStudent(@RequestBody SelectionBO selection) {
-        service.addSelection(selection);
-        return new CourseSelectionVO().success();
-    }
-
-    @PostMapping(UPDATE)
-    @APILog
-    public CourseSelectionVO updateStudent(@RequestBody SelectionBO selection) {
-        service.updateSelection(selection);
+        service.upsertSelection(selection);
         return new CourseSelectionVO().success();
     }
 

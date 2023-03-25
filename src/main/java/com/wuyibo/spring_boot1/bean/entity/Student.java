@@ -2,6 +2,8 @@ package com.wuyibo.spring_boot1.bean.entity;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class Student extends AbstractEntity{
     private String name;
