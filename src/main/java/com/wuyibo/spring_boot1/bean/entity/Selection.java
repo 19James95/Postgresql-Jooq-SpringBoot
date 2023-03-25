@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Selection extends AbstractEntity{
-    private Student student;
-    private Course course;
+    private Integer studentId;
+    private Integer courseId;
     private int grade;
 }
