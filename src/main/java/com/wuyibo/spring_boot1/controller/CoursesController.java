@@ -3,6 +3,7 @@ package com.wuyibo.spring_boot1.controller;
 import com.wuyibo.spring_boot1.bean.bo.CourseBO;
 import com.wuyibo.spring_boot1.bean.vo.CourseVO;
 import com.wuyibo.spring_boot1.common.APILog;
+import com.wuyibo.spring_boot1.common.BizException;
 import com.wuyibo.spring_boot1.service.CoursesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class CoursesController {
 
     @PostMapping(UPSERT)
     @APILog
-    public CourseVO upsertCourse(@RequestBody CourseBO course) {
+    public CourseVO upsertCourse(@RequestBody CourseBO course) throws BizException {
         service.upsertCourse(course);
         return new CourseVO().success();
     }

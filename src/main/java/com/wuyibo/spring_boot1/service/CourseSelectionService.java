@@ -1,10 +1,15 @@
 package com.wuyibo.spring_boot1.service;
 
+import com.wuyibo.db.generate.tables.pojos.Courses;
 import com.wuyibo.db.generate.tables.pojos.Selections;
+import com.wuyibo.db.generate.tables.pojos.Students;
 import com.wuyibo.spring_boot1.bean.bo.SelectionBO;
 import com.wuyibo.spring_boot1.bean.dto.CourseWithSelections;
+import com.wuyibo.spring_boot1.bean.dto.StudentWithSelections;
 import com.wuyibo.spring_boot1.bean.entity.Course;
 import com.wuyibo.spring_boot1.bean.entity.Selection;
+import com.wuyibo.spring_boot1.bean.ex.ResponseCode;
+import com.wuyibo.spring_boot1.common.BizException;
 import com.wuyibo.spring_boot1.config.JooqContextProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,11 +49,33 @@ public class CourseSelectionService extends BaseService {
         }
     }
 
-    public List<CourseWithSelections> getSelectionByCourseId() {
-        return null;
+    public CourseWithSelections getSelectionByCourseId(Integer id) throws BizException {
+        try {
+            Courses courses = coursesDao.fetchOneById(id);
+            List<Selections> selections = selectionsDao.fetchByCourseId(id);
+            CourseWithSelections courseWithSelections = new CourseWithSelections();
+            courseWithSelections.setCourseName(courses.getName());
+            courseWithSelections.setSelectionList(selections);
+            return courseWithSelections;
+        } catch (Exception e) {
+            logger.error("get selections by course id failed");
+            throw new BizException(ResponseCode.SELECTION_ADD_EX);
+
+        }
     }
 
-    public List<CourseWithSelections> getSelectionByStudentId() {
-        return null;
+    public StudentWithSelections getSelectionByStudentId(Integer id) throws BizException {
+        try {
+            List<Selections> selections = selectionsDao.fetchByStudentId(id);
+            Students students = studentsDao.fetchOneById(id);
+            StudentWithSelections studentWithSelections = new StudentWithSelections();
+            studentWithSelections.setStudentName(students.getName());
+            studentWithSelections.setSelectionList(selections);
+            return studentWithSelections;
+        } catch (Exception e) {
+            logger.error("get selections by student failed");
+            throw new BizException(ResponseCode.STUDENT_UPDATE_EX);
+
+        }
     }
 }
