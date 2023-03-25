@@ -24,7 +24,7 @@ public class SelectionController {
 
     @PostMapping(UPSERT)
     @APILog
-    public CourseSelectionVO addStudent(@RequestBody SelectionBO selection) {
+    public CourseSelectionVO addStudent(@RequestBody SelectionBO selection) throws BizException {
         service.upsertSelection(selection);
         return new CourseSelectionVO().success();
     }

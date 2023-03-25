@@ -21,13 +21,8 @@ import java.util.List;
 @Service
 public class CourseSelectionService extends BaseService {
     private static Logger logger = LoggerFactory.getLogger(CourseSelectionService.class);
-    final JooqContextProvider provider;
 
-    public CourseSelectionService(JooqContextProvider provider) {
-        this.provider = provider;
-    }
-
-    public void upsertSelection(SelectionBO selection) {
+    public void upsertSelection(SelectionBO selection) throws BizException {
         Integer id = selection.getId();
         Selection sel = selection.getSelection();
         if (id == null) {
@@ -37,6 +32,7 @@ public class CourseSelectionService extends BaseService {
                 selectionsDao.insert(selectionPojo);
             } catch (Exception e) {
                 logger.error("add selection failed!", e);
+                throw new BizException(ResponseCode.SELECTION_ADD_EX);
             }
         } else {
             try {
@@ -45,6 +41,7 @@ public class CourseSelectionService extends BaseService {
                 selectionsDao.update(selectionPojo);
             } catch (Exception e) {
                 logger.error("update selection failed!", e);
+                throw new BizException(ResponseCode.SELECTION_UPDATE_EX);
             }
         }
     }
@@ -59,8 +56,7 @@ public class CourseSelectionService extends BaseService {
             return courseWithSelections;
         } catch (Exception e) {
             logger.error("get selections by course id failed");
-            throw new BizException(ResponseCode.SELECTION_ADD_EX);
-
+            throw new BizException(ResponseCode.SELECTION_GET_BY_COURSE_EX);
         }
     }
 
@@ -74,8 +70,7 @@ public class CourseSelectionService extends BaseService {
             return studentWithSelections;
         } catch (Exception e) {
             logger.error("get selections by student failed");
-            throw new BizException(ResponseCode.STUDENT_UPDATE_EX);
-
+            throw new BizException(ResponseCode.SELECTION_GET_BY_STUDENT_EX);
         }
     }
 }
