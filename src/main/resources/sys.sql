@@ -9,10 +9,12 @@ CREATE TABLE students (
   clazz VARCHAR(100),
   headteacher VARCHAR(100),
   direction VARCHAR(100),
-  supervisor VARCHAR(100)
+  supervisor VARCHAR(100),
+  identity VARCHAR(100),
+  phone VARCHAR(100),
+  profession_id INT,
+  school_id INT
 );
-INSERT INTO students(name, gender, birthdate, grade, major, clazz, headteacher)
-VALUES('张三', '男', '1999-01-01', 3, '计算机科学与技术', '20231104', '王老师');
 
 -- 课程表格
 CREATE TABLE courses (
@@ -40,3 +42,16 @@ CREATE TABLE log (
  response TEXT
 );
 
+CREATE TABLE profession (
+ id SERIAL PRIMARY KEY,
+ name varchar(1024),
+ create_time timestamp,
+ deleted INT
+);
+
+CREATE TABLE school (
+ id SERIAL PRIMARY KEY,
+ name varchar(1024),
+ create_time timestamp,
+ deleted INT
+);
