@@ -10,4 +10,10 @@ import lombok.NoArgsConstructor;
 public class BaseDataVo {
     String message;
     String code;
+
+    public BaseDataVo success() {
+        this.message = "success";
+        this.code = "1000";
+        return this;
+    }
 }

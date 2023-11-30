@@ -1,5 +1,8 @@
 package com.wuyibo.spring_boot1.bean.vo;
 
+import lombok.Data;
+
+@Data
 public class StudentVO<T> extends BaseDataVo {
     private T data;
 
